@@ -1,6 +1,16 @@
-pip install celery
-pip install redis
-pip freeze > requirements.txt
-$chmod +x entrypoint.sh
-docker-compose up -d --build
--d means detached mode which is running the container in the background
+pip install celery - through terminal
+pip install redis - through terminal
+pip freeze > requirements.txt - through terminal
+$chmod +x entrypoint.sh - through bash
+docker-compose up -d --build - through bash
+- d means detached mode which is running the container in the background
+
+
+
+docker exec -it <container_name> //bin//sh - through bash
+- allows you to run commands in the container
+
+CREATING PROJECT THROUGH CONTAINER
+docker exec -it <container_name> //bin//sh - through bash
+python3 manage.py startapp <app_name> - through container (and allows you to create it locally)
+exit - to exit the container

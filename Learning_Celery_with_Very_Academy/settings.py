@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'dcelery.apps.DceleryConfig',
+    'app.apps.AppConfig',
 ]
 
 MIDDLEWARE = [

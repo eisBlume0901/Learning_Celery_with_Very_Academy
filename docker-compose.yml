@@ -20,6 +20,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    command: celery --app=Learning_Celery_with_Very_Academy worker --loglevel=info
     volumes:
       - .:/usr/src/app
     ports:
