@@ -1,6 +1,6 @@
-version: '3.12'
-
 services:
+  redis:
+    image: redis:7.4.1-alpine
   django:
     container_name: django
     build:
@@ -11,7 +11,20 @@ services:
       - .:/usr/src/app
     ports:
       - 8009:8000
-    environment:
-      - DEBUG=1
-      - SECRET_KEY=)%9v8rmdkm9^zsx_50=%-e3q(96gf3e_$+g8ux8@=hcxiuhkmh
-      - ALLOWED_HOSTS=localhost,127.0.0.1
+    env_file:
+      - .env
+    depends_on:
+      - redis
+  celery:
+    container_name: celery
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 8001:8000
+    env_file:
+      - .env
+    depends_on:
+      - redis
